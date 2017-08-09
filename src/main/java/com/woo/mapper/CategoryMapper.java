@@ -3,6 +3,7 @@ package com.woo.mapper;
 import java.util.List;
 
 import com.woo.pojo.Category;
+import com.woo.util.Page;
 
 public interface CategoryMapper
 {
@@ -17,6 +18,7 @@ public interface CategoryMapper
 
 	public List<Category> list();
 
-	public int count();
+	public List<Category> list(Page page);
 
+	public int total();
 }

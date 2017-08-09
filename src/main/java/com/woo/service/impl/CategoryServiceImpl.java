@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.woo.mapper.CategoryMapper;
 import com.woo.pojo.Category;
 import com.woo.service.CategoryService;
+import com.woo.util.Page;
 
 @Service
 public class CategoryServiceImpl implements CategoryService
@@ -18,6 +19,16 @@ public class CategoryServiceImpl implements CategoryService
 	public List<Category> list()
 	{
 		return categoryMapper.list();
-	};
+	}
+
+	public int total()
+	{
+		return categoryMapper.total();
+	}
+
+	public List<Category> list(Page page)
+	{
+		return categoryMapper.list(page);
+	}
 
 }
