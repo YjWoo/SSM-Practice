@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.woo.mapper.CategoryMapper;
 import com.woo.pojo.Category;
+import com.woo.service.CategoryService;
 import com.woo.util.Page;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,7 +24,7 @@ public class MybatisTest
 //	 @Test
 	public void testAdd()
 	{
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 30; i++)
 		{
 			Category category = new Category();
 			category.setName("new Category");
@@ -50,6 +51,16 @@ public class MybatisTest
 		{
 			System.out.println(c.getName());
 		}
+	}
+
+	@Autowired
+	private CategoryService categoryService;
+
+	@Test
+	public void testAddTwo()
+	{
+//		categoryService.deleteAll();
+		categoryService.addTwo();
 	}
 
 }

@@ -13,4 +13,8 @@ public interface CategoryService
 	int total();
 
 	List<Category> list(Page page);
+
+	void addTwo();
+
+	void deleteAll();
 }

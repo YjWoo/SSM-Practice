@@ -14,7 +14,7 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.woo.service" />
-	
+
 	<!-- C3P0 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -49,25 +49,12 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 			value="20" />
 	</bean>
-	
-	<!-- <bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8
-			</value>
 
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		输入数据库密码
-		<property name="password">
-			<value>???</value>
-		</property>
-	</bean> -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name="driverClassName"> <value>com.mysql.jdbc.Driver</value> </property> 
+		<property name="url"> <value>jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8 
+		</value> </property> <property name="username"> <value>root</value> </property> 
+		输入数据库密码 <property name="password"> <value>???</value> </property> </bean> -->
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="typeAliasesPackage" value="com.woo.pojo" />
@@ -78,5 +65,13 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.woo.mapper" />
 	</bean>
+
+	<!-- 开启事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
 
 </beans>
